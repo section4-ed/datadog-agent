@@ -1,0 +1,14 @@
+# TCP log intake for Node services. `source: nodejs` is sticky per port
+# (it selects the ingestion pipeline that remaps dd.trace_id -> trace_id),
+# so this port should only receive logs from Node senders. The `service`
+# tag is intentionally omitted — each sender self-identifies via the
+# `service` field in its JSON payload (Winston defaultMeta).
+#
+# To add a non-Node sender, append another entry on a new port, e.g.:
+#   - type: tcp
+#     port: 10519
+#     source: python
+logs:
+  - type: tcp
+    port: 10518
+    source: nodejs

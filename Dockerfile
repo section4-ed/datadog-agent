@@ -14,6 +14,9 @@ ENV DD_APM_NON_LOCAL_TRAFFIC=true
 ENV DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
 ENV DD_PROCESS_AGENT_ENABLED=true
 
+ENV DD_LOGS_ENABLED=true
+COPY config/conf.d/ /etc/datadog-agent/conf.d/
+
 # Automatically set by Render
 ARG RENDER_SERVICE_NAME=datadog
 
